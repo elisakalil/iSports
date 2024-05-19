@@ -27,7 +27,7 @@
 		696C7F322BF9A3B7008EC751 /* EventModel+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 696C7F312BF9A3B7008EC751 /* EventModel+Mapping.swift */; };
 		696C7F342BF9A3F9008EC751 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 696C7F332BF9A3F9008EC751 /* Event.swift */; };
 		696C7F362BF9C1FC008EC751 /* SportsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 696C7F352BF9C1FC008EC751 /* SportsViewModel.swift */; };
-		696C7F382BF9C4E3008EC751 /* SportsStored.swift in Sources */ = {isa = PBXBuildFile; fileRef = 696C7F372BF9C4E3008EC751 /* SportsStored.swift */; };
+		696C7F392BF9DC2D008EC751 /* mock_data.json in Resources */ = {isa = PBXBuildFile; fileRef = 690C6AE02BF825C700084259 /* mock_data.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,7 +73,6 @@
 		696C7F312BF9A3B7008EC751 /* EventModel+Mapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EventModel+Mapping.swift"; sourceTree = "<group>"; };
 		696C7F332BF9A3F9008EC751 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		696C7F352BF9C1FC008EC751 /* SportsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportsViewModel.swift; sourceTree = "<group>"; };
-		696C7F372BF9C4E3008EC751 /* SportsStored.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportsStored.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -216,7 +215,6 @@
 				690C6AE32BF8266000084259 /* Sport.swift */,
 				696C7F332BF9A3F9008EC751 /* Event.swift */,
 				696C7F312BF9A3B7008EC751 /* EventModel+Mapping.swift */,
-				696C7F372BF9C4E3008EC751 /* SportsStored.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -326,6 +324,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				690C6ABA2BF8222800084259 /* Assets.xcassets in Resources */,
+				696C7F392BF9DC2D008EC751 /* mock_data.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -358,7 +357,6 @@
 				696C7F322BF9A3B7008EC751 /* EventModel+Mapping.swift in Sources */,
 				690C6AB12BF8222700084259 /* AppDelegate.swift in Sources */,
 				696C7F362BF9C1FC008EC751 /* SportsViewModel.swift in Sources */,
-				696C7F382BF9C4E3008EC751 /* SportsStored.swift in Sources */,
 				690C6AE22BF8262700084259 /* APIService.swift in Sources */,
 				690C6AB32BF8222700084259 /* SceneDelegate.swift in Sources */,
 				690C6AE82BF826A900084259 /* SportsViewController.swift in Sources */,

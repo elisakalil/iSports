@@ -9,6 +9,8 @@ import UIKit
 
 class SportCell: UITableViewCell {
     
+    // MARK: - Properties
+    
     static let identifier = "CustomTableViewCell"
     var items: [EventModel] = []
     
@@ -107,10 +109,13 @@ extension SportCell: UICollectionViewDataSource, UICollectionViewDelegateFlowLay
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
         let event = items[indexPath.item]
+        let maxWidth: CGFloat = 120
+
         let titleWidth = event.description.size(withAttributes: [
             NSAttributedString.Key.font: UIFont.systemFont(ofSize: 12, weight: .light)
         ]).width
-        let cellWidth = titleWidth + 20
+
+        let cellWidth = min(titleWidth + 20, maxWidth)
         return CGSize(width: cellWidth, height: 100)
     }
     

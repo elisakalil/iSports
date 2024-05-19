@@ -5,45 +5,86 @@
 //  Created by Elisa Kalil on 19/05/24.
 //
 
-import Foundation
+import UIKit
+
+protocol SportsViewModelProtocol {
+    func numberOfSections() -> Int
+    func numberOfRowsInSection(with section: Int) -> Int
+    func getColapsableImage(with section: Int) -> UIImage
+    func sectionHeaderTitle(with section: Int) -> String
+    func toggleSectionExpansion(at index: Int)
+    func events(at indexPath: IndexPath) -> [EventModel]
+}
 
 class SportsViewModel {
     
-    private var sports: [Sport]
+    // MARK: - Properties
+
+    var sports: [Sport] = []
     private var isSectionExpanded: [Bool]
-    
-    // Singleton pattern: Instância compartilhada da SportsViewModel
     static let shared = SportsViewModel()
     
+    // MARK: - Initializer
+
     private init() {
-        // Inicialize os esportes aqui ou passe-os como argumento
-        self.sports = sportsStored
-        self.isSectionExpanded = Array(repeating: true, count: sports.count)
+        isSectionExpanded = Array(repeating: true, count: sports.count)
+        loadSportsData()
     }
     
-    // Número total de seções
-    var numberOfSections: Int {
-        return sports.count
+    // MARK: - Private Methods
+    
+    private func loadSportsData() {
+        if let url = Bundle.main.url(forResource: "mock_data", withExtension: "json") {
+            do {
+                let data = try Data(contentsOf: url)
+                self.sports = try JSONDecoder().decode([Sport].self, from: data)
+                self.isSectionExpanded = Array(repeating: true, count: self.sports.count)
+            } catch {
+                print("Error loading mock data:", error)
+            }
+        }
     }
     
-    // Verifica se uma seção está expandida ou não
-    func isSectionExpanded(at index: Int) -> Bool {
-        return isSectionExpanded[index]
+//    func isSectionExpanded(at index: Int) -> Bool {
+//        return isSectionExpanded[index]
+//    }
+    
+//    func numberOfEvents(inSection section: Int) -> Int {
+//        return isSectionExpanded[section] ? sports[section].events.count : 0
+//    }
+}
+
+// MARK: - SportsViewModelProtocol
+
+extension SportsViewModel: SportsViewModelProtocol {
+    func numberOfSections() -> Int {
+        var uniqueSport = Set<String>()
+        
+        for sport in sports {
+            uniqueSport.insert(sport.id)
+        }
+        return uniqueSport.count
     }
     
-    // Retorna o número de eventos em uma determinada seção
-    func numberOfEvents(inSection section: Int) -> Int {
-        return isSectionExpanded[section] ? sports[section].events.count : 0
+    func getColapsableImage(with section: Int) -> UIImage {
+        let imageName = isSectionExpanded[section] ? "chevron-selected" : "chevron"
+        let image = UIImage(named: imageName)
+        return image ?? .baseball1
     }
     
-    // Retorna o evento em um determinado índice de seção e linha
-    func event(at indexPath: IndexPath) -> Event {
-        return sports[indexPath.section].events[indexPath.row]
+    func numberOfRowsInSection(with section: Int) -> Int {
+        return isSectionExpanded[section] ? 1 : 0
     }
     
-    // Alterna a expansão de uma seção
+    func sectionHeaderTitle(with section: Int) -> String {
+        return SportType(rawValue: sports[section].description)?.fullName() ?? "Error"
+    }
+    
+    func events(at indexPath: IndexPath) -> [EventModel] {
+        return sports[indexPath.section].events.toEvents()
+    }
+    
     func toggleSectionExpansion(at index: Int) {
         isSectionExpanded[index].toggle()
     }
 }
-

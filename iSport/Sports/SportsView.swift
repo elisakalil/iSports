@@ -9,6 +9,8 @@ import UIKit
 
 class SportsView: UIView {
     
+    // MARK: - Properties
+    
     private lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.translatesAutoresizingMaskIntoConstraints = false

@@ -8,6 +8,8 @@ import UIKit
 
 class SportHeaderView: UIView {
     
+    // MARK: - Properties
+    
     private lazy var button: UIImageView = {
         let image = UIImage(named: "chevron")
         let button = UIImageView(image: image)

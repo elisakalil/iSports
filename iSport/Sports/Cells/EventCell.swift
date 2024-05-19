@@ -8,9 +8,13 @@
 import UIKit
 
 class EventCell: UICollectionViewCell {
+    
+    // MARK: - Properties
+    
     static let identifier = "EventCell"
-    var actualEventTime: Int = 0
     private var timer: Timer?
+    
+    var actualEventTime: Int = 0
     
     var isFavorited: Bool = false {
         didSet {
