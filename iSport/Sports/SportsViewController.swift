@@ -12,7 +12,6 @@ class SportsViewController: UIViewController {
     // MARK: - Properties
     
     var isSectionExpanded: [Bool] = []
-//    var favoritedEvents: [EventModel] = []
     var hiddenSections = Set<Int>()
     
     // MARK: - Initializer
@@ -72,11 +71,17 @@ class SportsViewController: UIViewController {
         view.backgroundColor = .systemBackground
     }
     
+    @objc func refreshButtonTapped() {
+        viewModel.reload()
+    }
+    
     private func setupNavigationBar() {
         navigationItem.title = "iSport"
-        let searchButton = UIBarButtonItem(systemItem: .search)
-        searchButton.tintColor = .black
-        navigationItem.rightBarButtonItem = searchButton
+        let refreshButton = UIBarButtonItem(systemItem: .refresh)
+        refreshButton.tintColor = .black
+        refreshButton.target = self
+        refreshButton.action = #selector(refreshButtonTapped)
+        navigationItem.rightBarButtonItem = refreshButton
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.largeTitleDisplayMode = .always
     }

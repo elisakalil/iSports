@@ -15,6 +15,7 @@ protocol SportsViewModelProtocol {
     func toggleSectionExpansion(at index: Int)
     func filterContentForSearchText(searchText: String)
     func didFavoritedEvent(with id: String)
+    func reload()
     func events(at indexPath: IndexPath) -> [EventModel]
 }
 
@@ -54,6 +55,10 @@ class SportsViewModel {
 // MARK: - SportsViewModelProtocol
 
 extension SportsViewModel: SportsViewModelProtocol {
+    func reload() {
+        loadSportsData()
+    }
+    
     func filterContentForSearchText(searchText: String) {
         if searchText.isEmpty {
             sports = originalSports
