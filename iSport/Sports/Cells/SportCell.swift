@@ -74,6 +74,10 @@ class SportCell: UITableViewCell {
         self.items = items
         collectionView.reloadData()
     }
+    
+    func getFavoriteEvents() -> [EventModel] {
+        return items
+    }
 }
 
 // MARK: - UICollectionViewDataSource, UICollectionViewDelegateFlowLayout

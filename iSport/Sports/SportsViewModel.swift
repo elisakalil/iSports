@@ -13,6 +13,7 @@ protocol SportsViewModelProtocol {
     func getColapsableImage(with section: Int) -> UIImage
     func sectionHeaderTitle(with section: Int) -> String
     func toggleSectionExpansion(at index: Int)
+    func filterContentForSearchText(searchText: String, favoritesEvents: [EventModel])
     func events(at indexPath: IndexPath) -> [EventModel]
 }
 
@@ -44,19 +45,39 @@ class SportsViewModel {
             }
         }
     }
-    
-//    func isSectionExpanded(at index: Int) -> Bool {
-//        return isSectionExpanded[index]
-//    }
-    
-//    func numberOfEvents(inSection section: Int) -> Int {
-//        return isSectionExpanded[section] ? sports[section].events.count : 0
-//    }
 }
 
 // MARK: - SportsViewModelProtocol
 
 extension SportsViewModel: SportsViewModelProtocol {
+    func filterContentForSearchText(searchText: String, favoritesEvents: [EventModel]) {
+        var filteredSports: [Sport] = []
+        
+        let favoriteEvents = favoritesEvents.filter { $0.isFavorited }
+        let favoriteEventIDs = Set(favoriteEvents.map { $0.id })
+        
+        for sport in sports {
+            let filteredEvents = sport.events.filter { event in
+                let isFavorited = favoriteEventIDs.contains(event.id)
+                
+                let containsSearchText = event.description.lowercased().contains(searchText.lowercased())
+                
+                return isFavorited && containsSearchText
+            }
+            
+            if !filteredEvents.isEmpty {
+                let filteredSport = Sport(id: sport.id, description: sport.description, events: filteredEvents)
+                filteredSports.append(filteredSport)
+            }
+        }
+        
+        if searchText != "" {
+            sports = filteredSports
+        } else {
+            loadSportsData()
+        }
+    }
+    
     func numberOfSections() -> Int {
         var uniqueSport = Set<String>()
         

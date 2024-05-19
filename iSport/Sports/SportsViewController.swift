@@ -12,6 +12,7 @@ class SportsViewController: UIViewController {
     // MARK: - Properties
     
     var isSectionExpanded: [Bool] = []
+    var favoritedEvents:[EventModel] = []
     var hiddenSections = Set<Int>()
     
     // MARK: - Initializer
@@ -35,6 +36,7 @@ class SportsViewController: UIViewController {
         setupNavigationBar()
         setupScrollView()
         setupTableView()
+        setupSearchBar()
         setupUI()
     }
     
@@ -47,6 +49,10 @@ class SportsViewController: UIViewController {
         tableView.separatorStyle = .none
 
         tableView.register(SportCell.self, forCellReuseIdentifier: SportCell.identifier)
+    }
+    
+    private func setupSearchBar() {
+        contentView?.searchBar.delegate = self
     }
     
     private func setupScrollView() {
@@ -95,6 +101,8 @@ extension SportsViewController: UITableViewDataSource {
         let events = viewModel.events(at: indexPath)
         cell.configureUI(items: events)
         
+        favoritedEvents = cell.getFavoriteEvents()
+        
         return cell
     }
 }
@@ -135,5 +143,19 @@ extension SportsViewController: UITableViewDelegate {
                 self.contentView?.tableView.reloadSections(IndexSet(integer: section), with: .automatic)
             }
         }
+    }
+}
+
+// MARK: - UISearchBarDelegate
+
+extension SportsViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        
+        viewModel.filterContentForSearchText(searchText: searchText, favoritesEvents: favoritedEvents)
+        contentView?.tableView.reloadData()
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
     }
 }

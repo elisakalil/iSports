@@ -8,6 +8,7 @@
 import Foundation
 
 struct EventModel {
+    let id: String
     let image: String
     let timestamp: Int
     let description: String
@@ -17,6 +18,7 @@ struct EventModel {
 extension Event {
     func toEvent() -> EventModel {
         .init(
+            id: sportId,
             image: image,
             timestamp: timestamp,
             description: description,
