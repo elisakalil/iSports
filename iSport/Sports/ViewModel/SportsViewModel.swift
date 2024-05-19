@@ -7,18 +7,6 @@
 
 import UIKit
 
-protocol SportsViewModelProtocol {
-    func numberOfSections() -> Int
-    func numberOfRowsInSection(with section: Int) -> Int
-    func getColapsableImage(with section: Int) -> UIImage
-    func sectionHeaderTitle(with section: Int) -> String
-    func toggleSectionExpansion(at index: Int)
-    func filterContentForSearchText(searchText: String)
-    func didFavoritedEvent(with id: String)
-    func reload()
-    func events(at indexPath: IndexPath) -> [EventModel]
-}
-
 class SportsViewModel {
     
     // MARK: - Properties

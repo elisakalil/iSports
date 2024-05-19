@@ -164,6 +164,8 @@ extension SportsViewController: UISearchBarDelegate {
     }
 }
 
+// MARK: - SportCellDelegate
+
 extension SportsViewController: SportCellDelegate {
     func didFavoriteEvent(_ cell: SportCell, eventID: String) {
         viewModel.didFavoritedEvent(with: eventID)
