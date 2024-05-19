@@ -12,7 +12,7 @@ class SportsViewController: UIViewController {
     // MARK: - Properties
     
     var isSectionExpanded: [Bool] = []
-    var favoritedEvents:[EventModel] = []
+//    var favoritedEvents: [EventModel] = []
     var hiddenSections = Set<Int>()
     
     // MARK: - Initializer
@@ -100,9 +100,8 @@ extension SportsViewController: UITableViewDataSource {
         
         let events = viewModel.events(at: indexPath)
         cell.configureUI(items: events)
-        
-        favoritedEvents = cell.getFavoriteEvents()
-        
+        cell.delegate = self
+                
         return cell
     }
 }
@@ -151,11 +150,18 @@ extension SportsViewController: UITableViewDelegate {
 extension SportsViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         
-        viewModel.filterContentForSearchText(searchText: searchText, favoritesEvents: favoritedEvents)
+        viewModel.filterContentForSearchText(searchText: searchText)
         contentView?.tableView.reloadData()
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
+    }
+}
+
+extension SportsViewController: SportCellDelegate {
+    func didFavoriteEvent(_ cell: SportCell, eventID: String) {
+        viewModel.didFavoritedEvent(with: eventID)
+        contentView?.tableView.reloadData()
     }
 }

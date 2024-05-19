@@ -7,11 +7,16 @@
 
 import UIKit
 
+protocol SportCellDelegate: AnyObject {
+    func didFavoriteEvent(_ cell: SportCell, eventID: String)
+}
+
 class SportCell: UITableViewCell {
     
     // MARK: - Properties
     
     static let identifier = "CustomTableViewCell"
+    weak var delegate: SportCellDelegate?
     var items: [EventModel] = []
     
     private let separator: UIView = {
@@ -126,5 +131,9 @@ extension SportCell: UICollectionViewDataSource, UICollectionViewDelegateFlowLay
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         items[indexPath.item].isFavorited.toggle()
         collectionView.reloadItems(at: [indexPath])
+        
+        let id = items[indexPath.item].id
+        
+        delegate?.didFavoriteEvent(self, eventID: id)
     }
 }

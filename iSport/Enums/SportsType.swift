@@ -8,35 +8,32 @@
 import Foundation
 
 enum SportType: String {
-    case FOOT
-    case BASKT
-    case VOLLY
-    case TENIS
-    case BASEB
-    case SOCCR
-    case SWIM
-    case BDMNT
-    case TRCKF
+    case BASKETBALL
+    case VOLLEY
+    case TENNIS
+    case BASEBALL
+    case SOCCER
+    case SWIMMING
+    case BADMINTON
+    case TRACK
     
     func fullName() -> String {
         switch self {
-        case .FOOT:
-            return "Football"
-        case .BASKT:
+        case .BASKETBALL:
             return "Basketball"
-        case .VOLLY:
+        case .VOLLEY:
             return "Volleyball"
-        case .TENIS:
+        case .TENNIS:
             return "Tennis"
-        case .BASEB:
+        case .BASEBALL:
             return "Baseball"
-        case .SOCCR:
+        case .SOCCER:
             return "Soccer"
-        case .SWIM:
+        case .SWIMMING:
             return "Swimming"
-        case .BDMNT:
+        case .BADMINTON:
             return "Badminton"
-        case .TRCKF:
+        case .TRACK:
             return "Track and Field"
         }
     }

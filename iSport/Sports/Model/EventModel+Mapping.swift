@@ -18,7 +18,7 @@ struct EventModel {
 extension Event {
     func toEvent() -> EventModel {
         .init(
-            id: sportId,
+            id: eventId,
             image: image,
             timestamp: timestamp,
             description: description,

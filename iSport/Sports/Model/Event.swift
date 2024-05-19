@@ -8,14 +8,14 @@
 import Foundation
 
 public struct Event: Decodable {
-    public let id: String
+    public let eventId: String
     public let sportId: String
     public let image: String
     public let description: String
     public let timestamp: Int
     
-    public init(id: String, sportId: String, image: String, description: String, timestamp: Int) {
-        self.id = id
+    public init(eventId: String, sportId: String, image: String, description: String, timestamp: Int) {
+        self.eventId = eventId
         self.sportId = sportId
         self.image = image
         self.description = description
@@ -23,7 +23,7 @@ public struct Event: Decodable {
     }
     
     enum CodingKeys: String, CodingKey {
-        case id = "i"
+        case eventId = "i"
         case sportId = "si"
         case image = "im"
         case description = "d"

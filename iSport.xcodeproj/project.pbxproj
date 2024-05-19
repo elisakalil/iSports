@@ -28,6 +28,7 @@
 		696C7F342BF9A3F9008EC751 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 696C7F332BF9A3F9008EC751 /* Event.swift */; };
 		696C7F362BF9C1FC008EC751 /* SportsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 696C7F352BF9C1FC008EC751 /* SportsViewModel.swift */; };
 		696C7F392BF9DC2D008EC751 /* mock_data.json in Resources */ = {isa = PBXBuildFile; fileRef = 690C6AE02BF825C700084259 /* mock_data.json */; };
+		699EE5B02BFAA2EE00BED05A /* SportModel+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 699EE5AF2BFAA2EE00BED05A /* SportModel+Mapping.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +74,7 @@
 		696C7F312BF9A3B7008EC751 /* EventModel+Mapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EventModel+Mapping.swift"; sourceTree = "<group>"; };
 		696C7F332BF9A3F9008EC751 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		696C7F352BF9C1FC008EC751 /* SportsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportsViewModel.swift; sourceTree = "<group>"; };
+		699EE5AF2BFAA2EE00BED05A /* SportModel+Mapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SportModel+Mapping.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -215,6 +217,7 @@
 				690C6AE32BF8266000084259 /* Sport.swift */,
 				696C7F332BF9A3F9008EC751 /* Event.swift */,
 				696C7F312BF9A3B7008EC751 /* EventModel+Mapping.swift */,
+				699EE5AF2BFAA2EE00BED05A /* SportModel+Mapping.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -353,6 +356,7 @@
 				696C7F282BF97B4E008EC751 /* String+Extension.swift in Sources */,
 				696C7F242BF90879008EC751 /* EventCell.swift in Sources */,
 				696C7F222BF8FE9C008EC751 /* SportsView.swift in Sources */,
+				699EE5B02BFAA2EE00BED05A /* SportModel+Mapping.swift in Sources */,
 				696C7F342BF9A3F9008EC751 /* Event.swift in Sources */,
 				696C7F322BF9A3B7008EC751 /* EventModel+Mapping.swift in Sources */,
 				690C6AB12BF8222700084259 /* AppDelegate.swift in Sources */,

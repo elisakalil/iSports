@@ -1,46 +1,46 @@
 [
   {
-    "i": "089067",
-    "d": "FOOT",
+    "i": "FOOT",
+    "d": "SOCCER",
     "e": [
       {
-        "i": "1234",
-        "si": "1234",
+        "i": "6234",
+        "si": "FOOT",
         "im": "foot1",
         "d": "Greece-Spain",
         "tt": 1732890260
       },
       {
         "i": "6235",
-        "si": "6234",
+        "si": "FOOT",
         "im": "foot2",
         "d": "Italy-France",
         "tt": 1657944685
       },
       {
         "i": "6236",
-        "si": "6234",
+        "si": "FOOT",
         "im": "foot1",
         "d": "Greece-Spain",
         "tt": 1658002684
       },
       {
         "i": "6239",
-        "si": "6234",
+        "si": "FOOT",
         "im": "foot3",
         "d": "Italy-France",
         "tt": 1658011084
       },
       {
         "i": "6240",
-        "si": "6234",
+        "si": "FOOT",
         "im": "foot1",
         "d": "Greece-Spain",
         "tt": 1658025484
       },
       {
         "i": "6241",
-        "si": "6234",
+        "si": "FOOT",
         "im": "foot2",
         "d": "Italy-France",
         "tt": 1657982284
@@ -48,47 +48,47 @@
     ]
   },
   {
-    "i": "089068",
-    "d": "BASKT",
+    "i": "BASKT",
+    "d": "BASKETBALL",
     "e": [
       {
         "i": "7234",
-        "si": "7234",
+        "si": "BASKT",
         "im": "basketball1",
         "d": "USA-Canada",
         "tt": 1657944686
       },
       {
         "i": "7235",
-        "si": "7234",
+        "si": "BASKT",
         "im": "basketball2",
         "d": "USA-Canada",
         "tt": 1657944687
       },
       {
         "i": "7236",
-        "si": "7234",
+        "si": "BASKT",
         "im": "basketball3",
         "d": "USA-Canada",
         "tt": 1657944688
       },
       {
         "i": "7237",
-        "si": "7234",
+        "si": "BASKT",
         "im": "basketball4",
         "d": "USA-Canada",
         "tt": 1657944689
       },
       {
         "i": "7238",
-        "si": "7234",
+        "si": "BASKT",
         "im": "basketball5",
         "d": "USA-Canada",
         "tt": 1657944690
       },
       {
         "i": "7239",
-        "si": "7234",
+        "si": "BASKT",
         "im": "basketball5",
         "d": "USA-Canada",
         "tt": 1657944691
@@ -96,47 +96,47 @@
     ]
   },
   {
-    "i": "08906890",
-    "d": "BDMNT",
+    "i": "BDMNT",
+    "d": "BADMINTON",
     "e": [
       {
         "i": "8234",
-        "si": "8234",
+        "si": "BDMNT",
         "im": "badminton1",
         "d": "Lin Dan-Lee Chong Wei",
         "tt": 1657944698
       },
       {
         "i": "8235",
-        "si": "8234",
+        "si": "BDMNT",
         "im": "badminton2",
         "d": "Chen Long-Kento Momota",
         "tt": 1657944699
       },
       {
         "i": "8236",
-        "si": "8234",
+        "si": "BDMNT",
         "im": "badminton3",
         "d": "Viktor Axelsen-Anthony Ginting",
         "tt": 1657944700
       },
       {
         "i": "8237",
-        "si": "8234",
+        "si": "BDMNT",
         "im": "badminton4",
         "d": "Anders Antonsen-Shi Yuqi",
         "tt": 1657944701
       },
       {
         "i": "8238",
-        "si": "8234",
+        "si": "BDMNT",
         "im": "badminton5",
         "d": "Kevin Sanjaya-Marcus Gideon",
         "tt": 1657944702
       },
       {
         "i": "8239",
-        "si": "8234",
+        "si": "BDMNT",
         "im": "badminton6",
         "d": "Hendra Setiawan-Mohammad Ahsan",
         "tt": 1657944703
@@ -144,41 +144,41 @@
     ]
   },
   {
-    "i": "906890",
-    "d": "TRCKF",
+    "i": "TRCKF",
+    "d": "TRACK",
     "e": [
       {
         "i": "9234",
-        "si": "9234",
+        "si": "TRCKF",
         "im": "track1",
         "d": "100m-Dash",
         "tt": 1657944700
       },
       {
         "i": "9235",
-        "si": "9234",
+        "si": "TRCKF",
         "im": "track2",
         "d": "4x100m-Relay",
         "tt": 1657944701
       },
       {
         "i": "9236",
-        "si": "9234",
+        "si": "TRCKF",
         "im": "track3",
-        "d": "400m",
+        "d": "440m-Hurdles",
         "tt": 1657944702
       },
       {
         "i": "9237",
-        "si": "9234",
+        "si": "TRCKF",
         "im": "track4",
-        "d": "1500m",
+        "d": "330m-Hurdles",
         "tt": 1657944703
       },
       {
         "i": "9238",
-        "si": "9234",
-        "im": "track5",
+        "si": "TRCKF",
+        "im": "track2",
         "d": "110m-Hurdles",
         "tt": 1657944704
       }

@@ -13,7 +13,8 @@ protocol SportsViewModelProtocol {
     func getColapsableImage(with section: Int) -> UIImage
     func sectionHeaderTitle(with section: Int) -> String
     func toggleSectionExpansion(at index: Int)
-    func filterContentForSearchText(searchText: String, favoritesEvents: [EventModel])
+    func filterContentForSearchText(searchText: String)
+    func didFavoritedEvent(with id: String)
     func events(at indexPath: IndexPath) -> [EventModel]
 }
 
@@ -21,8 +22,9 @@ class SportsViewModel {
     
     // MARK: - Properties
 
-    var sports: [Sport] = []
+    var sports: [SportModel] = []
     private var isSectionExpanded: [Bool]
+    private var originalSports: [SportModel] = []
     static let shared = SportsViewModel()
     
     // MARK: - Initializer
@@ -38,7 +40,9 @@ class SportsViewModel {
         if let url = Bundle.main.url(forResource: "mock_data", withExtension: "json") {
             do {
                 let data = try Data(contentsOf: url)
-                self.sports = try JSONDecoder().decode([Sport].self, from: data)
+                let sports = try JSONDecoder().decode([Sport].self, from: data)
+                self.sports = sports.map { $0.toSport() }
+                self.originalSports = self.sports
                 self.isSectionExpanded = Array(repeating: true, count: self.sports.count)
             } catch {
                 print("Error loading mock data:", error)
@@ -50,31 +54,25 @@ class SportsViewModel {
 // MARK: - SportsViewModelProtocol
 
 extension SportsViewModel: SportsViewModelProtocol {
-    func filterContentForSearchText(searchText: String, favoritesEvents: [EventModel]) {
-        var filteredSports: [Sport] = []
-        
-        let favoriteEvents = favoritesEvents.filter { $0.isFavorited }
-        let favoriteEventIDs = Set(favoriteEvents.map { $0.id })
-        
-        for sport in sports {
-            let filteredEvents = sport.events.filter { event in
-                let isFavorited = favoriteEventIDs.contains(event.id)
-                
-                let containsSearchText = event.description.lowercased().contains(searchText.lowercased())
-                
-                return isFavorited && containsSearchText
-            }
-            
-            if !filteredEvents.isEmpty {
-                let filteredSport = Sport(id: sport.id, description: sport.description, events: filteredEvents)
-                filteredSports.append(filteredSport)
-            }
-        }
-        
-        if searchText != "" {
-            sports = filteredSports
+    func filterContentForSearchText(searchText: String) {
+        if searchText.isEmpty {
+            sports = originalSports
         } else {
-            loadSportsData()
+            var filteredSports: [SportModel] = []
+            
+            for sport in originalSports {
+                let filteredEvents = sport.events.filter { event in
+                    let isFavorited = event.isFavorited
+                    let containsSearchText = event.description.lowercased().contains(searchText.lowercased())
+                    return isFavorited && containsSearchText
+                }
+                
+                if !filteredEvents.isEmpty {
+                    let filteredSport = SportModel(id: sport.id, description: sport.description, events: filteredEvents)
+                    filteredSports.append(filteredSport)
+                }
+            }
+            sports = filteredSports
         }
     }
     
@@ -102,10 +100,26 @@ extension SportsViewModel: SportsViewModelProtocol {
     }
     
     func events(at indexPath: IndexPath) -> [EventModel] {
-        return sports[indexPath.section].events.toEvents()
+        return sports[indexPath.section].events
     }
     
     func toggleSectionExpansion(at index: Int) {
         isSectionExpanded[index].toggle()
+    }
+    
+    func didFavoritedEvent(with id: String) {
+        for (sportIndex, sport) in sports.enumerated() {
+            if let eventIndex = sport.events.firstIndex(where: { $0.id == id }) {
+                sports[sportIndex].events[eventIndex].isFavorited.toggle()
+                break
+            }
+        }
+        
+        for (sportIndex, originalSport) in originalSports.enumerated() {
+            if let eventIndex = originalSport.events.firstIndex(where: { $0.id == id }) {
+                originalSports[sportIndex].events[eventIndex].isFavorited.toggle()
+                break
+            }
+        }
     }
 }
