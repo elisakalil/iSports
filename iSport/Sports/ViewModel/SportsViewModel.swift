@@ -57,6 +57,7 @@ extension SportsViewModel: SportsViewModelProtocol {
                 let filteredEvents = sport.events.filter { event in
                     let isFavorited = event.isFavorited
                     let containsSearchText = event.description.lowercased().contains(searchText.lowercased())
+                    print("\(event.description) contains \(searchText.lowercased()) - \(containsSearchText)")
                     return isFavorited && containsSearchText
                 }
                 
@@ -104,6 +105,7 @@ extension SportsViewModel: SportsViewModelProtocol {
         for (sportIndex, sport) in sports.enumerated() {
             if let eventIndex = sport.events.firstIndex(where: { $0.id == id }) {
                 sports[sportIndex].events[eventIndex].isFavorited.toggle()
+                
                 break
             }
         }
